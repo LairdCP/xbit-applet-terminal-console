@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="./node_modules/xterm/css/xterm.css" />
+    <link rel="stylesheet" href="./node_modules/@bennybtl/xbit-lib/dist/style.css">
+  </head>
+  
+  <body style="margin: 0">
+    <div id="terminal"></div>
+    <div id="floating-buttons" class="bg-canvas-slate-800 text-gray-400">
+      <div class="flex">
+        <div class="canvas-ui-group flex flex-row">
+          <button id="clear-console" class="canvas-button bg-canvas-slate-600 text-gray-100">Clear Console</button>
+          <button id="send-break" class="canvas-button bg-canvas-slate-600 text-gray-100">Send Break</button>
+          <button id="send-eof" class="canvas-button bg-canvas-slate-600 text-gray-100">Send EOF</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="./node_modules/xterm/lib/xterm.js"></script>
+  <script type="module" src="./src/main.js"></script>
+</html>
