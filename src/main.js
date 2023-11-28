@@ -1,6 +1,6 @@
 /* global Terminal */
-import { xbit, Button } from './node_modules/xbit-lib/index.js'
-
+import { xbit, Button } from '@bennybtl/xbit-lib/dist/xbit.js'
+import { Terminal } from 'xterm'
 const term = new Terminal()
 term.open(document.getElementById('terminal'))
 let breakDebounce
