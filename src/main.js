@@ -26,7 +26,7 @@ window.addEventListener('resize', () => {
 })
 
 term.attachCustomKeyEventHandler((event) => {
-  if (event.keyCode === 67 && event.ctrlKey) {
+  if (event.key === 'c' && event.ctrlKey) {
     if (event.repeat || breakDebounce) {
       return false
     }
@@ -35,7 +35,7 @@ term.attachCustomKeyEventHandler((event) => {
     }, 1000)
     sendBreak()
     return false
-  } else if (event.keyCode === 68 && event.ctrlKey) {
+  } else if (event.key === 'd' && event.ctrlKey) {
     if (event.repeat || eofDebounce) {
       return false
     }
@@ -48,14 +48,10 @@ term.attachCustomKeyEventHandler((event) => {
   return true
 })
 
-// term.write('Hello from \x1B[1;3;31mxterm.js\x1B[0m $ ')
 term.onKey(({ key, domEvent }) => {
-  console.log('on key', key, domEvent)
-  // const printable = !domEvent.altKey && !domEvent.altGraphKey && !domEvent.ctrlKey && !domEvent.metaKey
-  // console.log('printable', printable)
 
   // press enter
-  if (domEvent.keyCode === 13) {
+  if (domEvent.key === 'Enter') {
     term.write('\r')
   // } else if (domEvent.keyCode === 8) {
   //   // Do not delete the prompt
@@ -72,18 +68,24 @@ term.onKey(({ key, domEvent }) => {
 })
 
 term.onData((data) => {
-  console.log('on data', data)
+  // console.log('on data', data)
   // term.write(data)
 })
 
-xbit.addEventListener(function (data) {
-  // console.log('on message', data)
-  if (data.method === 'rawData') {
-    term.write(data.params.data)
-  }
+xbit.addEventListener('rawData', function (data) {
+  console.log('applet terminal: on message', data)
+  term.write(data.params.data)
 })
 
-setTimeout(() => {
+setTimeout(async () => {
+  const result = await xbit.sendCommand({
+    method: 'getSelectedPort'
+  })
+
+  if (result.selected === 'None' && result.connected === false) {
+    return
+  }
+
   xbit.sendCommand({
     method: 'writeRaw',
     params: {

@@ -1,7 +1,7 @@
 {
   "title": "Terminal Console",
   "name": "terminal-console",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "An XTerminal Applet",
   "config": {
     "image": "image.png"
