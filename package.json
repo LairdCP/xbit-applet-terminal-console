@@ -1,7 +1,7 @@
 {
   "title": "Terminal Console",
   "name": "terminal-console",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "An XTerminal Applet",
   "config": {
     "image": "image.png"
@@ -9,7 +9,7 @@
   "main": "dist/index.html",
   "author": "Ben Lloyd",
   "dependencies": {
-    "@bennybtl/xbit-lib": "^1.0.3",
+    "@bennybtl/xbit-lib": "^1.0.11",
     "xterm": "^5.1.0"
   },
   "scripts": {

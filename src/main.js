@@ -60,7 +60,7 @@ term.onKey(({ key, domEvent }) => {
   //   }
   }
   xbit.sendCommand({
-    method: 'writeRaw',
+    method: 'xbitWriteRaw',
     params: {
       data: key
     }
@@ -87,7 +87,7 @@ setTimeout(async () => {
   }
 
   xbit.sendCommand({
-    method: 'writeRaw',
+    method: 'xbitWriteRaw',
     params: {
       data: '\r'
     }
@@ -96,7 +96,7 @@ setTimeout(async () => {
 
 const sendBreak = () => {
   xbit.sendCommand({
-    method: 'writeRaw',
+    method: 'xbitWriteRaw',
     params: {
       data: '\x03'
     }
@@ -105,7 +105,7 @@ const sendBreak = () => {
 
 const sendEof = () => {
   xbit.sendCommand({
-    method: 'writeRaw',
+    method: 'xbitWriteRaw',
     params: {
       data: '\x04'
     }
